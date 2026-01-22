@@ -1,0 +1,26 @@
+Dans l'interface admin, Nous allons  dans Settings→ User Roles
+On clique sur "Create Role"
+
+configuration :
+
+Name : Lecteur API
+Description : Rôle pour accès lecture API
+App Access : Désactivé
+Admin Access : Désactivé
+
+
+
+Ensuite on donne les droits de lecture sur toutes les collections (voir capture d'écran)
+
+On clique sur le rôle "API Reader" que l'on a créé
+Dans l'onglet Permissions, pour chaque collection :
+
+praticien
+specialite
+structure
+motifvisite
+moyenpaiement
+
+Pour chaque collection, On applique ses parametres:
+Action : Read
+Fields : All
