@@ -1,0 +1,32 @@
+Utilisateur 1 : Avec Token Statique
+
+dans Settings → Users Roles -> Lecteur API
+Clique sur "Create User"
+Configuration :
+
+First Name : API
+Last Name : Statique
+Email : api.static@mail.com
+Password : mdp
+Role : Lecteur API
+Status : Active
+
+Créer le token statique :
+
+Une fois l'utilisateur créé, on clique dessus
+dans l'onglet "Token"
+Clique sur "Generate Token"
+puis on sauvegarde le token (UAAQpreNf3DIXuP78_wFK4Lql5-HqXpX)
+
+
+
+Utilisateur 2 : Avec Token JWT
+
+First Name : API
+Last Name : JWT
+Email : api.jwt@example.com
+Password : mdp
+Role : Lecteur API
+Status : Active
+
+Pas besoin de créer de token statique  le JWT s'obtient en s'authentifiant via l'API.
