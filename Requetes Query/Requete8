@@ -1,0 +1,20 @@
+fragment PraticienInfo on praticien {
+  id
+  nom
+  prenom
+  telephone
+  ville
+  specialite{
+    libelle
+  }
+}
+
+query PraticiensPlusieursVillesAvecFragment {
+  praticiensParis: praticien(filter: { ville: { _eq: "Paris" } }) {
+    ...PraticienInfo
+  }
+
+  praticiensBourdon: praticien(filter: { ville: { _eq: "Bourdon-les-Bains" } }) {
+    ...PraticienInfo
+  }
+}

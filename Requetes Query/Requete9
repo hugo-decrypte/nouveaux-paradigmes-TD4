@@ -1,0 +1,17 @@
+query PraticiensParVille($ville: String!) {
+  praticien(filter: { ville: { _eq: $ville } }) {
+    id
+    nom
+    prenom
+    telephone
+    ville
+    specialite {
+      libelle
+    }
+  }
+}
+
+// Section variables dans postman
+{
+  "ville": "Paris"
+}

@@ -1,0 +1,16 @@
+query PraticiensStructure {
+  praticiens(where: { ville: { _eq: "Paris" } }) {
+    id
+    nom
+    prenom
+    telephone
+    ville
+    specialite {
+      libelle
+    }
+    structure {
+      nom
+      ville
+    }
+  }
+}

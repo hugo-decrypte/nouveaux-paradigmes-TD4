@@ -1,0 +1,21 @@
+query PraticiensStructureParis {
+  praticien(
+    where: {
+      structure: { ville: { _eq: "Paris" } }
+    }
+  ) {
+    id
+    nom
+    prenom
+    telephone
+    ville
+    email
+    specialite {
+      libelle
+    }
+    structure {
+      nom
+      ville
+    }
+  }
+}

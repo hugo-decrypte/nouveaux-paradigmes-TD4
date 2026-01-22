@@ -1,0 +1,12 @@
+query PraticienLibelle {
+    praticien {
+        id
+        nom
+        prenom
+        ville
+        telephone
+        specialite{
+            libelle
+        }
+    }
+}

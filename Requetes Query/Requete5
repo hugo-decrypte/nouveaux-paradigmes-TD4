@@ -1,0 +1,17 @@
+query PraticienEmail {
+    praticien(filter: { ville: { _eq: "Paris" }, email: { _contains: ".fr" } }) {
+        id
+        nom
+        prenom
+        ville
+        telephone
+        email
+        specialite {
+            libelle
+        }
+        structure {
+            nom
+            ville
+        }
+    }
+}

@@ -1,0 +1,14 @@
+query StructuresPraticiens {
+  structure {
+    nom
+    ville
+    praticien {
+      nom
+      prenom
+      email
+      specialite {
+        libelle
+      }
+    }
+  }
+}

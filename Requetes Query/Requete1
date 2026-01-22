@@ -1,0 +1,9 @@
+query ListePraticiens {
+  praticien {
+    id
+    nom
+    prenom
+    telephone
+    ville
+  }
+}

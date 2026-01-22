@@ -1,0 +1,23 @@
+query PraticiensPlusieursVilles {
+  praticiensParis: praticiens(filter: { ville: { _eq: "Paris" } }) {
+    id
+    nom
+    prenom
+    telephone
+    ville=
+    specialite {
+      libelle
+    }
+  }
+
+  praticiensBourdon: praticiens(filter: { ville: { _eq: "Bourdon-les-Bains" } }) {
+    id
+    nom
+    prenom
+    telephone
+    ville
+    specialite {
+      libelle
+    }
+  }
+}
