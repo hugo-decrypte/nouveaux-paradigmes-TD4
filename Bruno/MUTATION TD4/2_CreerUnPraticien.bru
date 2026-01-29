@@ -1,0 +1,44 @@
+meta {
+  name: 2_CreerUnPraticien
+  type: graphql
+  seq: 3
+}
+
+post {
+  url: 127.0.0.1:8055/graphql/
+  body: graphql
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{DIRECTUS_TOKEN}}
+}
+
+body:graphql {
+  mutation Create_praticien_item {
+      create_praticien_item(
+          data: {
+              nom: "Doe"
+              prenom: "John"
+              ville: "Nancy"
+              email: "johndoe@nancy.fr"
+              telephone: "0612345678"
+          }
+      ) {
+          id
+          nom
+          prenom
+          ville
+          email
+      }
+  }
+}
+
+script:post-response {
+  bru.setVar("PRATI_1_ID", res.getBody().data.create_praticien_item.id);
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

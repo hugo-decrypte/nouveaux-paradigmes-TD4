@@ -1,0 +1,40 @@
+meta {
+  name: 6-2_UpdatePraticien
+  type: graphql
+  seq: 10
+}
+
+post {
+  url: 127.0.0.1:8055/graphql/
+  body: graphql
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{DIRECTUS_TOKEN}}
+}
+
+body:graphql {
+  mutation Update_praticien_items($id: ID!) {
+      update_praticien_items(
+          ids: [$id]
+          data: { specialite_id: { id: "7" } }
+      ) {
+          id
+          specialite_id {
+              libelle
+          }
+      }
+  }
+}
+
+body:graphql:vars {
+  {
+    "id": "{{lastCreatedId}}"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

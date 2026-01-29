@@ -1,0 +1,37 @@
+meta {
+  name: 8_SupprimerLesDeuxDernierPraticiensCrees
+  type: graphql
+  seq: 9
+}
+
+post {
+  url: 127.0.0.1:8055/graphql/
+  body: graphql
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{DIRECTUS_TOKEN}}
+}
+
+body:graphql {
+  mutation Delete_praticien_items($praticien_2: ID!, $praticien_3: ID!) {
+      delete_praticien_items(
+          ids: [$praticien_2, $praticien_3]
+      ) {
+          ids
+      }
+  }
+}
+
+body:graphql:vars {
+  {
+    "praticien_2" : "{{PRATI_2_ID}}",
+    "praticien_3" : "{{PRATI_3_ID}}"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

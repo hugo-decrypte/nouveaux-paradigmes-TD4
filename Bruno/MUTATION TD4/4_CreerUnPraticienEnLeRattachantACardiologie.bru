@@ -1,0 +1,53 @@
+meta {
+  name: 4_CreerUnPraticienEnLeRattachantACardiologie
+  type: graphql
+  seq: 4
+}
+
+post {
+  url: 127.0.0.1:8055/graphql/
+  body: graphql
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{DIRECTUS_TOKEN}}
+}
+
+body:graphql {
+  mutation Create_praticien_item {
+      create_praticien_item(
+          data: {
+              nom: "BENA"
+              prenom: "Hugo"
+              ville: "Nancy"
+              email: "hugobena@mail.fr"
+              telephone: "0623456789"
+              specialite_id: { id: "6" }
+          }
+      ) {
+          id
+          nom
+          prenom
+          specialite_id {
+              id
+              libelle
+          }
+      }
+  }
+}
+
+body:graphql:vars {
+  {
+    "specId": "{{CARDIOLOGIE_ID}}"
+  }
+}
+
+script:post-response {
+  bru.setVar("PRATI_2_ID", res.getBody().data.create_praticien_item.id);
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

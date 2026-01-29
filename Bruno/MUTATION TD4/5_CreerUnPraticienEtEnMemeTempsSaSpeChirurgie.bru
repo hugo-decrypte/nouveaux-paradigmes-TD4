@@ -1,0 +1,50 @@
+meta {
+  name: 5_CreerUnPraticienEtEnMemeTempsSaSpeChirurgie
+  type: graphql
+  seq: 5
+}
+
+post {
+  url: 127.0.0.1:8055/graphql/
+  body: graphql
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{DIRECTUS_TOKEN}}
+}
+
+body:graphql {
+  mutation Create_praticien_item {
+      create_praticien_item(
+          data: {
+              nom: "CHERCHARI"
+              prenom: "Sofien"
+              ville: "Nancy"
+              email: "chercharisofien@mail.fr"
+              telephone: "0634567891"
+              specialite_id: {
+                  libelle: "Chirurgie"
+                  description: "Description de la specialite chirurgie"
+              }
+          }
+      ) {
+          id
+          nom
+          prenom
+          specialite_id {
+              id
+              libelle
+          }
+      }
+  }
+}
+
+script:post-response {
+  bru.setVar("PRATI_3_ID", res.getBody().data.create_praticien_item.id);
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

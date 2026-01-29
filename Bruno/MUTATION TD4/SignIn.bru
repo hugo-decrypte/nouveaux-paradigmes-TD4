@@ -1,0 +1,30 @@
+meta {
+  name: SignIn
+  type: graphql
+  seq: 11
+}
+
+post {
+  url: 127.0.0.1:8055/graphql/system
+  body: graphql
+  auth: inherit
+}
+
+body:graphql {
+  mutation Auth_login {
+      auth_login(email: "admin@mail.com", password: "admin") {
+          access_token
+          expires
+          refresh_token
+      }
+  }
+}
+
+script:post-response {
+  bru.setVar("DIRECTUS_TOKEN", res.getBody().data.auth_login.access_token);
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

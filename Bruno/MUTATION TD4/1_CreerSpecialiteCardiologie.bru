@@ -1,0 +1,39 @@
+meta {
+  name: 1_CreerSpecialiteCardiologie
+  type: graphql
+  seq: 1
+}
+
+post {
+  url: 127.0.0.1:8055/graphql/
+  body: graphql
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{DIRECTUS_TOKEN}}
+}
+
+body:graphql {
+  mutation Create_specialite_item {
+      create_specialite_item(
+          data: {
+              libelle: "cardiologie"
+              description: "Description de la specialité cardiologie"
+          }
+      ) {
+          id
+          libelle
+          description
+      }
+  }
+}
+
+script:post-response {
+  bru.setVar("CARDIOLOGIE_ID", res.getBody().data.create_specialite_item.id);
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

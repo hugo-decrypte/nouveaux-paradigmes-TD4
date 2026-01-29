@@ -1,0 +1,44 @@
+meta {
+  name: 7_ModifierLePremierPraticienCreePourLeRattacherAUneStructureExistante
+  type: graphql
+  seq: 8
+}
+
+post {
+  url: 127.0.0.1:8055/graphql/
+  body: graphql
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{DIRECTUS_TOKEN}}
+}
+
+body:graphql {
+  mutation Update_praticien_items($praticien_1: ID!) {
+      update_praticien_items(
+          ids: [$praticien_1]
+          data: { structure_id: { id: "e65145bb-ce57-4320-b0a8-6c0ba06def6d" } }
+      ) {
+          structure_id {
+              id
+              nom
+            	ville
+          }
+          id
+          nom
+          prenom
+      }
+  }
+}
+
+body:graphql:vars {
+  {
+    "praticien_1" : "{{PRATI_1_ID}}"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
