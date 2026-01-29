@@ -1,0 +1,5 @@
+Aller dans Settings → User Roles
+
+Dans l'onglet Permissions :
+Pour la collection motifs_visite : désactiver le droit de Read
+Pour la collection moyens_paiement : désactiver le droit de Read

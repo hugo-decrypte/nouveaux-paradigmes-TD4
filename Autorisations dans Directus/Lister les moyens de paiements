@@ -1,0 +1,19 @@
+Test 1 : Sans authentification
+On essaie d'accéder aux données sans fournir de token :
+
+Requête 1 : Demander la liste des moyens de paiement
+Requête 2 : Demander la liste des spécialités avec leurs motifs de visite
+
+Les deux requêtes échouent avec une erreur
+Parce qu'on a retiré les droits de lecture au rôle Public sur ces collections. Directus nous considère comme un utilisateur public puisque qu'on n'est pas authentifié
+
+Test 2 : Avec l'utilisateur Token Statique
+On refait la Requête 1 (moyens de paiement), mais cette fois avec le token statique de l'utilisateur api.static@mail.com
+La requête fonctionne, on obtient la liste des moyens de paiement
+Le token statique prouve notre identité. Directus reconnaît qu'on fait partie du rôle "Lecteur API" qui a les droits de lecture sur toutes les collections
+
+Test 3 : Avec l'utilisateur JWT
+Pour utiliser l'authentification JWT, il faut d'abord se connecter avec l'email et le mot de passe de l'utilisateur api.jwt@example.com. Directus nous renvoie alors un token JWT temporaire
+Ensuite, on utilise ce token JWT pour faire la Requête 2
+La requête fonctionne, on obtient la liste des spécialités avec leurs motifs de visite
+Le token JWT prouve également notre identité et nous donne accès au rôle "Lecteur API"
