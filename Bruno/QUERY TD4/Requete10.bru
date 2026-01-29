@@ -1,0 +1,38 @@
+meta {
+  name: Requete10
+  type: graphql
+  seq: 12
+}
+
+post {
+  url: 127.0.0.1:8055/graphql/
+  body: graphql
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{DIRECTUS_TOKEN}}
+}
+
+body:graphql {
+  query StructuresPraticiens {
+    structure {
+      nom
+      ville
+      praticien {
+        nom
+        prenom
+        email
+        specialite {
+          libelle
+        }
+      }
+    }
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

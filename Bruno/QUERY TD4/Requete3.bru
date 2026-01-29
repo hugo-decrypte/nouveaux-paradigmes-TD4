@@ -1,0 +1,36 @@
+meta {
+  name: Requete3
+  type: graphql
+  seq: 5
+}
+
+post {
+  url: 127.0.0.1:8055/graphql/
+  body: graphql
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{DIRECTUS_TOKEN}}
+}
+
+body:graphql {
+  query PraticienLibelleFiltre {
+      praticien(filter: { ville: { _eq: "Paris" } }) {
+          id
+          nom
+          prenom
+          ville
+          telephone
+          specialite{
+              libelle
+          }
+      }
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,46 @@
+meta {
+  name: Requete7
+  type: graphql
+  seq: 9
+}
+
+post {
+  url: 127.0.0.1:8055/graphql/
+  body: graphql
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{DIRECTUS_TOKEN}}
+}
+
+body:graphql {
+  query PraticiensPlusieursVilles {
+    praticiensParis: praticiens(filter: { ville: { _eq: "Paris" } }) {
+      id
+      nom
+      prenom
+      telephone
+      ville
+      specialite {
+        libelle
+      }
+    }
+  
+    praticiensBourdon: praticiens(filter: { ville: { _eq: "Bourdon-les-Bains" } }) {
+      id
+      nom
+      prenom
+      telephone
+      ville
+      specialite {
+        libelle
+      }
+    }
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

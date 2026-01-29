@@ -1,0 +1,44 @@
+meta {
+  name: Requete6
+  type: graphql
+  seq: 8
+}
+
+post {
+  url: 127.0.0.1:8055/graphql/
+  body: graphql
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{DIRECTUS_TOKEN}}
+}
+
+body:graphql {
+  query PraticiensStructureParis {
+    praticien(
+      where: {
+        structure: { ville: { _eq: "Paris" } }
+      }
+    ) {
+      id
+      nom
+      prenom
+      telephone
+      ville
+      email
+      specialite {
+        libelle
+      }
+      structure {
+        nom
+        ville
+      }
+    }
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

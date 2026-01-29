@@ -1,0 +1,41 @@
+meta {
+  name: Requete5
+  type: graphql
+  seq: 7
+}
+
+post {
+  url: 127.0.0.1:8055/graphql/
+  body: graphql
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{DIRECTUS_TOKEN}}
+}
+
+body:graphql {
+  query PraticienEmail {
+      praticien(filter: { ville: { _eq: "Paris" }, email: { _contains: ".fr" } }) {
+          id
+          nom
+          prenom
+          ville
+          telephone
+          email
+          specialite {
+              libelle
+          }
+          structure {
+              nom
+              ville
+          }
+      }
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

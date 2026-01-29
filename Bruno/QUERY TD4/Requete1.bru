@@ -1,0 +1,32 @@
+meta {
+  name: Requete1
+  type: graphql
+  seq: 1
+}
+
+post {
+  url: 127.0.0.1:8055/graphql/
+  body: graphql
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{DIRECTUS_TOKEN}}
+}
+
+body:graphql {
+  query ListePraticiens {
+    praticien {
+      id
+      nom
+      prenom
+      telephone
+      ville
+    }
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
