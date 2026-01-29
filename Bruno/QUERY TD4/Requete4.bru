@@ -16,7 +16,7 @@ auth:bearer {
 
 body:graphql {
   query PraticiensStructure {
-    praticiens(where: { ville: { _eq: "Paris" } }) {
+    praticiens(filter: { ville: { _eq: "Paris" } }) {
       id
       nom
       prenom
